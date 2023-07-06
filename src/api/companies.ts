@@ -1,5 +1,5 @@
-import { Router } from "oak";
-import { CompaniesService } from "../db/companies.ts";
+import { Router, CompaniesService } from "../deps.ts";
+
 const companiesRounter = new Router();
 
 companiesRounter.get("/", async (ctx) => {

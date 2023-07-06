@@ -1,7 +1,4 @@
-import { Application, Router } from "oak";
-import { oakCors } from "cors";
-
-import { companiesRounter } from "./api/companies.ts";
+import { Application, Router, companiesRounter, oakCors } from "./deps.ts";
 
 const app = new Application();
 
