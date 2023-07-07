@@ -1,6 +1,4 @@
-import app from "./app.ts";
-
-import { load } from "std/dotenv/mod.ts";
+import { load, app } from "./deps.ts";
 
 // first try to load .env file if fails try to load from process env
 const env = await load();

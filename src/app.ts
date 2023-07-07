@@ -1,4 +1,10 @@
-import { Application, Router, companiesRounter, oakCors } from "./deps.ts";
+import {
+  Application,
+  Router,
+  companiesRounter,
+  rektsRouter,
+  oakCors,
+} from "./deps.ts";
 
 const app = new Application();
 
@@ -10,6 +16,8 @@ router.get("/", (ctx) => {
 
 // Companies route
 router.use("/companies", companiesRounter.routes());
+// Rekts route
+router.use("/rekts", rektsRouter.routes());
 
 // set up CORS to allow requests
 app.use(oakCors());
