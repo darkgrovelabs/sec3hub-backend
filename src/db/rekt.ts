@@ -55,7 +55,20 @@ const getTotalRekts = async () => {
   return totalRekts;
 };
 
+// get total keyword hits
+const getTotalKeywordHits = async (keyword: string) => {
+  const totalKeywordHits = await sql`
+    SELECT * FROM rekt 
+    WHERE name ILIKE ${"%" + keyword + "%"}
+    OR category ILIKE ${"%" + keyword + "%"}
+    OR auidted_by::text ILIKE ${"%" + keyword + "%"}
+    OR txs::text ILIKE ${"%" + keyword + "%"}
+      `;
+  return totalKeywordHits;
+};
+
 export const RektsService = {
   getRekts,
   getTotalRekts,
+  getTotalKeywordHits,
 };

@@ -34,9 +34,8 @@ const getProducts = async (
     products = await sql`
         SELECT * FROM product 
         WHERE name ILIKE ${"%" + keyword + "%"}
-        OR type ILIKE ${"%" + keyword + "%"}
-        OR location ILIKE ${"%" + keyword + "%"}
-        OR services::text ILIKE ${"%" + keyword + "%"}
+        OR description ILIKE ${"%" + keyword + "%"}
+        OR categories::text ILIKE ${"%" + keyword + "%"}
 
         ${
           isDesc
@@ -57,8 +56,20 @@ const getTotalProducts = async () => {
   return totalProducts;
 };
 
+// get total keyword hits
+const getTotalKeywordHits = async (keyword: string) => {
+  const totalKeywordHits = await sql`
+    SELECT COUNT(*) FROM product 
+    WHERE name ILIKE ${"%" + keyword + "%"}
+    OR description ILIKE ${"%" + keyword + "%"}
+    OR categories::text ILIKE ${"%" + keyword + "%"}
+    `;
+  return totalKeywordHits;
+};
+
 // to make it work with sinons stub we need to wrap the function in an object
 export const ProductsService = {
   getProducts,
   getTotalProducts,
+  getTotalKeywordHits,
 };

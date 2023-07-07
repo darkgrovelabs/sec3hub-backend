@@ -52,7 +52,18 @@ const getTotalResources = async () => {
   return totalRekts;
 };
 
+// get total keyword hits
+const getTotalKeywordHits = async (keyword: string) => {
+  const totalKeywordHits = await sql`
+    SELECT COUNT(*)  FROM resource 
+    WHERE category ILIKE ${"%" + keyword + "%"}
+    OR description ILIKE ${"%" + keyword + "%"}
+      `;
+  return totalKeywordHits;
+};
+
 export const ResourceService = {
   getResources,
   getTotalResources,
+  getTotalKeywordHits,
 };

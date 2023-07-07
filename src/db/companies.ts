@@ -50,6 +50,18 @@ const getCompanies = async (
   return companies;
 };
 
+// get total keyword hits
+const getTotalKeywordHits = async (keyword: string) => {
+  const totalKeywordHits = await sql`
+    SELECT COUNT(*) FROM company
+    WHERE name ILIKE ${"%" + keyword + "%"}
+    OR type ILIKE ${"%" + keyword + "%"}
+    OR location ILIKE ${"%" + keyword + "%"}
+    OR services::text ILIKE ${"%" + keyword + "%"}
+    `;
+  return totalKeywordHits;
+};
+
 // get total number of companies
 
 const getTotalCompanies = async () => {
@@ -62,4 +74,5 @@ const getTotalCompanies = async () => {
 export const CompaniesService = {
   getCompanies,
   getTotalCompanies,
+  getTotalKeywordHits,
 };

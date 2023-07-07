@@ -45,7 +45,7 @@ resourcesRouter.get("/", async (ctx) => {
   }
 
   // get the rekts from the database
-  const rekts = await ResourceService.getResources(
+  const resources = await ResourceService.getResources(
     page ? parseInt(page) : 1,
     limit ? parseInt(limit) : 10,
     sort ? sort : "id",
@@ -53,13 +53,20 @@ resourcesRouter.get("/", async (ctx) => {
     order ? order : "asc"
   );
 
-  const rektsCount = await ResourceService.getTotalResources();
+  const resourceCount = await ResourceService.getTotalResources();
 
   // set the response headers
-  const total = rektsCount[0].count.toString();
+  const total = resourceCount[0].count.toString();
   ctx.response.headers.set("X-Row-Count", total);
+
+  if (keyword) {
+    const companies = await ResourceService.getTotalKeywordHits(keyword);
+    const total = companies[0].count.toString();
+    ctx.response.headers.set("X-Keyword-Count", total);
+  }
+
   // set the response body
-  ctx.response.body = rekts;
+  ctx.response.body = resources;
 });
 
 export { resourcesRouter };

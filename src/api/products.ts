@@ -64,6 +64,12 @@ productsRouter.get("/", async (ctx) => {
   const total = productsCount[0].count.toString();
   ctx.response.headers.set("X-Row-Count", total);
 
+  if (keyword) {
+    const products = await ProductsService.getTotalKeywordHits(keyword);
+    const total = products[0].count.toString();
+    ctx.response.headers.set("X-Keyword-Count", total);
+  }
+
   // set the response body
   ctx.response.body = products;
 });
