@@ -68,7 +68,7 @@ companiesRounter.get("/", async (ctx) => {
   if (keyword) {
     const companies = await CompaniesService.getTotalKeywordHits(keyword);
     const total = companies[0].count.toString();
-    ctx.response.headers.set("X-Keyword-Hit", total);
+    ctx.response.headers.set("X-Keyword-Count", total);
   }
 
   // set the response body

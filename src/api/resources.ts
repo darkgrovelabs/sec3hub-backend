@@ -60,8 +60,8 @@ resourcesRouter.get("/", async (ctx) => {
   ctx.response.headers.set("X-Row-Count", total);
 
   if (keyword) {
-    const companies = await ResourceService.getTotalKeywordHits(keyword);
-    const total = companies[0].count.toString();
+    const resources = await ResourceService.getTotalKeywordHits(keyword);
+    const total = resources[0].count.toString();
     ctx.response.headers.set("X-Keyword-Count", total);
   }
 
