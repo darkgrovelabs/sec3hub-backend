@@ -7,6 +7,8 @@ rektsRouter.get("/", async (ctx) => {
   const page = ctx.request.url.searchParams.get("page");
   const limit = ctx.request.url.searchParams.get("limit");
   const sort = ctx.request.url.searchParams.get("sort");
+  const keyword = ctx.request.url.searchParams.get("keyword");
+  const order = ctx.request.url.searchParams.get("order");
 
   // sort allowed values whitelist
   const sortAllowedValues = [
@@ -17,6 +19,18 @@ rektsRouter.get("/", async (ctx) => {
     "date",
     "created_at",
   ];
+
+  // allowed orders
+  const allowedOrders = ["asc", "desc"];
+
+  // validate order value
+  if (order && !allowedOrders.includes(order)) {
+    ctx.response.status = 400;
+    ctx.response.body = {
+      error: "invalid order value",
+    };
+    return;
+  }
 
   // validate sort value
   if (sort && !sortAllowedValues.includes(sort)) {
@@ -41,9 +55,16 @@ rektsRouter.get("/", async (ctx) => {
   const rekts = await RektsService.getRekts(
     page ? parseInt(page) : 1,
     limit ? parseInt(limit) : 10,
-    sort ? sort : "id"
+    sort ? sort : "id",
+    keyword ? keyword : "",
+    order ? order : "asc"
   );
 
+  const rektsCount = await RektsService.getTotalRekts();
+
+  // set the response headers
+  const total = rektsCount[0].count.toString();
+  ctx.response.headers.set("X-Row-Count", total);
   // set the response body
   ctx.response.body = rekts;
 });

@@ -1,15 +1,13 @@
 ## API for sec3hub.xyz
 
-a standalone api, aggerat cleaned data to sec3hub.xyz frontend might become a api server for other projects and friends in the future.
+a standalone api, aggregate cleaned data to sec3hub.xyz frontend might become a api server for other projects and friends in the future.
 
 
 ## Backgroud : 
 
-at darkgrove we feel adventurous so we are going to try deno and fly , neon for this project.for anything more complex than this i would to stick to  , go, nodejs , python or rust.
+at darkgrove we feel adventurous so we are going to try deno and fly , neon for this project. lets see how it goes.
 
-
-
-##  build components
+##  Tech stack
 
 - deno
   - pleasent developer experience
@@ -21,9 +19,6 @@ at darkgrove we feel adventurous so we are going to try deno and fly , neon for 
   docker based serverless 
 - neon
     Serverless Postgres 
-
-
-
 
 ## Setup
 for local dev can create a .env file in the root directory. for production use process env variables.
@@ -61,7 +56,7 @@ docker build .  -t sec3back
 docker run -it -p 8080:8080 sec3back
 ```
 
-or witl rm and detach
+or with rm and detach
 
 ```bash
 docker run -it -p 8080:8080 -d --rm sec3back
@@ -77,5 +72,7 @@ flyctl deploy
 
 ### API
 
-there is insomia file in the root directory
+there is insomia file in the root directory for testing the api.
+
+![img](./assets/docs.png)
 

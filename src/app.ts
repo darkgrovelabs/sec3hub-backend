@@ -3,6 +3,8 @@ import {
   Router,
   companiesRounter,
   rektsRouter,
+  productsRouter,
+  resourcesRouter,
   oakCors,
 } from "./deps.ts";
 
@@ -18,6 +20,10 @@ router.get("/", (ctx) => {
 router.use("/companies", companiesRounter.routes());
 // Rekts route
 router.use("/rekts", rektsRouter.routes());
+// Products route
+router.use("/products", productsRouter.routes());
+// Resources route
+router.use("/resources", resourcesRouter.routes());
 
 // set up CORS to allow requests
 app.use(oakCors());
