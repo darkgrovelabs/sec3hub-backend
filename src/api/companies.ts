@@ -57,7 +57,7 @@ companiesRounter.get("/", async (ctx) => {
     page ? parseInt(page) : 1,
     limit ? parseInt(limit) : 10,
     sort ? sort : "id",
-    keyword ? keyword : "",
+    keyword ? keyword.toLowerCase() : "",
     order ? order : "asc"
   );
 

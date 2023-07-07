@@ -70,9 +70,8 @@ flyctl deploy
 
 
 
-### API
-
-there is insomia file in the root directory for testing the api.
+### API Docs 
+there is insomia file in the root directory for testing the api. no fancy swagger docs yet.
 
 ![img](./assets/docs.png)
 
