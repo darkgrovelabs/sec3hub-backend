@@ -33,10 +33,10 @@ const getProducts = async (
   } else {
     products = await sql`
         SELECT * FROM product 
-        WHERE name LIKE ${"%" + keyword + "%"}
-        OR type LIKE ${"%" + keyword + "%"}
-        OR location LIKE ${"%" + keyword + "%"}
-        OR services::text LIKE ${"%" + keyword + "%"}
+        WHERE name ILIKE ${"%" + keyword + "%"}
+        OR type ILIKE ${"%" + keyword + "%"}
+        OR location ILIKE ${"%" + keyword + "%"}
+        OR services::text ILIKE ${"%" + keyword + "%"}
 
         ${
           isDesc

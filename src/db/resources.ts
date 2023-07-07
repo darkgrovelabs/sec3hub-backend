@@ -29,8 +29,8 @@ const getResources = async (
   } else {
     resources = await sql`
         SELECT * FROM resource 
-        WHERE category LIKE ${"%" + keyword + "%"}
-        OR description LIKE ${"%" + keyword + "%"}
+        WHERE category ILIKE ${"%" + keyword + "%"}
+        OR description ILIKE ${"%" + keyword + "%"}
         ${
           isDesc
             ? sql`ORDER BY ${sql(sort)} DESC`

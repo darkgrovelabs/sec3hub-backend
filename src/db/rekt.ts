@@ -29,10 +29,10 @@ const getRekts = async (
   } else {
     rekts = await sql`
         SELECT * FROM rekt 
-        WHERE name LIKE ${"%" + keyword + "%"}
-        OR category LIKE ${"%" + keyword + "%"}
-        OR auidted_by::text LIKE ${"%" + keyword + "%"}
-        OR txs::text LIKE ${"%" + keyword + "%"}
+        WHERE name ILIKE ${"%" + keyword + "%"}
+        OR category ILIKE ${"%" + keyword + "%"}
+        OR auidted_by::text ILIKE ${"%" + keyword + "%"}
+        OR txs::text ILIKE ${"%" + keyword + "%"}
 
         ${
           isDesc
