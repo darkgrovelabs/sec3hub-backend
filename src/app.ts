@@ -27,6 +27,13 @@ router.use("/resources", resourcesRouter.routes());
 
 // set up CORS to allow requests
 app.use(oakCors());
+
+// for x-row-count header
+app.use((ctx, next) => {
+  ctx.response.headers.set("Access-Control-Expose-Headers", "*");
+  return next();
+});
+
 app.use(router.routes());
 app.use(router.allowedMethods());
 

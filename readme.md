@@ -75,3 +75,9 @@ there is insomia file in the root directory for testing the api. no fancy swagge
 
 ![img](./assets/docs.png)
 
+
+
+Note endpoints return two headers
+
+x-keyword-count	 total number of searched keyword in the database
+x-row-count	  total number of rows returned from the database
