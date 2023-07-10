@@ -487,5 +487,94 @@
     "https://jspm.dev/npm:superagent@6.1.0/lib/response-base!cjs": "00ac549f34d73c2753caa798aa7eb781051179013e3418ff0868a1e1904a8913",
     "https://jspm.dev/npm:superagent@6.1.0/lib/utils!cjs": "ea706523553983c96ef4ab2f191c61c53fb8b78ad8ff2472b48f1385e896c030",
     "https://jspm.dev/superagent@6.1.0": "4b3082d71252c42abd3930d85d1f3c4b2e937e0fab2b5f1c9d19eac20dea89a9"
+  },
+  "npm": {
+    "specifiers": {
+      "@noble/curves@1.1.0": "@noble/curves@1.1.0",
+      "viem@1.2.12": "viem@1.2.12_ws@8.12.0"
+    },
+    "packages": {
+      "@adraffy/ens-normalize@1.9.0": {
+        "integrity": "sha512-iowxq3U30sghZotgl4s/oJRci6WPBfNO5YYgk2cIOMCHr3LeGPcsZjCEr+33Q4N+oV3OABDAtA+pyvWjbvBifQ==",
+        "dependencies": {}
+      },
+      "@noble/curves@1.0.0": {
+        "integrity": "sha512-2upgEu0iLiDVDZkNLeFV2+ht0BAVgQnEmCk6JsOch9Rp8xfkMCbvbAZlA2pBHQc73dbl+vFOXfqkf4uemdn0bw==",
+        "dependencies": {
+          "@noble/hashes": "@noble/hashes@1.3.0"
+        }
+      },
+      "@noble/curves@1.1.0": {
+        "integrity": "sha512-091oBExgENk/kGj3AZmtBDMpxQPDtxQABR2B9lb1JbVTs6ytdzZNwvhxQ4MWasRNEzlbEH8jCWFCwhF/Obj5AA==",
+        "dependencies": {
+          "@noble/hashes": "@noble/hashes@1.3.1"
+        }
+      },
+      "@noble/hashes@1.3.0": {
+        "integrity": "sha512-ilHEACi9DwqJB0pw7kv+Apvh50jiiSyR/cQ3y4W7lOR5mhvn/50FLUfsnfJz0BDZtl/RR16kXvptiv6q1msYZg==",
+        "dependencies": {}
+      },
+      "@noble/hashes@1.3.1": {
+        "integrity": "sha512-EbqwksQwz9xDRGfDST86whPBgM65E0OH/pCgqW0GBVzO22bNE+NuIbeTb714+IfSjU3aRk47EUvXIb5bTsenKA==",
+        "dependencies": {}
+      },
+      "@scure/base@1.1.1": {
+        "integrity": "sha512-ZxOhsSyxYwLJj3pLZCefNitxsj093tb2vq90mp2txoYeBqbcjDjqFhyM8eUjq/uFm6zJ+mUuqxlS2FkuSY1MTA==",
+        "dependencies": {}
+      },
+      "@scure/bip32@1.3.0": {
+        "integrity": "sha512-bcKpo1oj54hGholplGLpqPHRbIsnbixFtc06nwuNM5/dwSXOq/AAYoIBRsBmnZJSdfeNW5rnff7NTAz3ZCqR9Q==",
+        "dependencies": {
+          "@noble/curves": "@noble/curves@1.0.0",
+          "@noble/hashes": "@noble/hashes@1.3.1",
+          "@scure/base": "@scure/base@1.1.1"
+        }
+      },
+      "@scure/bip39@1.2.0": {
+        "integrity": "sha512-SX/uKq52cuxm4YFXWFaVByaSHJh2w3BnokVSeUJVCv6K7WulT9u2BuNRBhuFl8vAuYnzx9bEu9WgpcNYTrYieg==",
+        "dependencies": {
+          "@noble/hashes": "@noble/hashes@1.3.1",
+          "@scure/base": "@scure/base@1.1.1"
+        }
+      },
+      "@wagmi/chains@1.2.0": {
+        "integrity": "sha512-dmDRipsE54JfyudOBkuhEexqQWcrZqxn/qiujG8SBzMh/az/AH5xlJSA+j1CPWTx9+QofSMF3B7A4gb6XRmSaQ==",
+        "dependencies": {}
+      },
+      "abitype@0.8.11_typescript@5.1.6": {
+        "integrity": "sha512-bM4v2dKvX08sZ9IU38IN5BKmN+ZkOSd2oI4a9f0ejHYZQYV6cDr7j+d95ga0z2XHG36Y4jzoG5Z7qDqxp7fi/A==",
+        "dependencies": {
+          "typescript": "typescript@5.1.6"
+        }
+      },
+      "isomorphic-ws@5.0.0_ws@8.12.0": {
+        "integrity": "sha512-muId7Zzn9ywDsyXgTIafTry2sV3nySZeUDe6YedVd1Hvuuep5AsIlqK+XefWpYTyJG5e503F2xIuT2lcU6rCSw==",
+        "dependencies": {
+          "ws": "ws@8.12.0"
+        }
+      },
+      "typescript@5.1.6": {
+        "integrity": "sha512-zaWCozRZ6DLEWAWFrVDz1H6FVXzUSfTy5FUMWsQlU8Ym5JP9eO4xkTIROFCQvhQf61z6O/G6ugw3SgAnvvm+HA==",
+        "dependencies": {}
+      },
+      "viem@1.2.12_ws@8.12.0": {
+        "integrity": "sha512-TMhvqT2VaCaJyBfuNDyL1h8xPFyPDHeX6Qab66TjWscnNcTwkW0gojO4Uh+A4RuPzFxIlWSW+b5SjS8SJHlHpg==",
+        "dependencies": {
+          "@adraffy/ens-normalize": "@adraffy/ens-normalize@1.9.0",
+          "@noble/curves": "@noble/curves@1.0.0",
+          "@noble/hashes": "@noble/hashes@1.3.0",
+          "@scure/bip32": "@scure/bip32@1.3.0",
+          "@scure/bip39": "@scure/bip39@1.2.0",
+          "@wagmi/chains": "@wagmi/chains@1.2.0",
+          "abitype": "abitype@0.8.11_typescript@5.1.6",
+          "isomorphic-ws": "isomorphic-ws@5.0.0_ws@8.12.0",
+          "ws": "ws@8.12.0"
+        }
+      },
+      "ws@8.12.0": {
+        "integrity": "sha512-kU62emKIdKVeEIOIKVegvqpXMSTAMLJozpHZaJNDYqBjzlSYXQGviYwN1osDLJ9av68qHd4a2oSjd7yD4pacig==",
+        "dependencies": {}
+      }
+    }
   }
 }
