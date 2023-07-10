@@ -44,7 +44,7 @@ votesRouter.post("/", async (ctx) => {
   const hasVoted = await VotesService.hasVoted(pub, parseInt(id), type);
 
   if (hasVoted) {
-    ctx.response.status = 400;
+    ctx.response.status = 409;
     ctx.response.body = {
       error: "user has already voted for this company",
     };

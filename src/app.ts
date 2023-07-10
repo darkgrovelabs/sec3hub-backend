@@ -25,8 +25,8 @@ router.use("/rekts", rektsRouter.routes());
 router.use("/products", productsRouter.routes());
 // Resources route
 router.use("/resources", resourcesRouter.routes());
-// Verify route
-router.use("/verify", votesRouter.routes());
+// Vote route
+router.use("/vote", votesRouter.routes());
 app.use(votesRouter.allowedMethods());
 
 // set up CORS to allow requests
