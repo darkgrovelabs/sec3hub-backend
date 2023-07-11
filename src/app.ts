@@ -1,7 +1,7 @@
 import {
   Application,
   Router,
-  companiesRounter,
+  auditorsRounter,
   rektsRouter,
   productsRouter,
   resourcesRouter,
@@ -17,8 +17,8 @@ router.get("/", (ctx) => {
   ctx.response.body = "Sec3hub.xyz Backbone!";
 });
 
-// Companies route
-router.use("/companies", companiesRounter.routes());
+// Auditors route
+router.use("/auditors", auditorsRounter.routes());
 // Rekts route
 router.use("/rekts", rektsRouter.routes());
 // Products route

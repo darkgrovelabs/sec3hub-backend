@@ -8,7 +8,7 @@ export { Router, Application } from "oak";
 export { oakCors } from "cors";
 
 // controllers
-export { companiesRounter } from "./api/companies.ts";
+export { auditorsRounter } from "./api/auditors.ts";
 export { rektsRouter } from "./api/rekt.ts";
 export { productsRouter } from "./api/products.ts";
 export { resourcesRouter } from "./api/resources.ts";
@@ -16,7 +16,7 @@ export { votesRouter } from "./api/votes.ts";
 
 // services
 export { sql } from "./db/db.ts";
-export { CompaniesService } from "./db/companies.ts";
+export { AuditorsService } from "./db/auditors.ts";
 export { RektsService } from "./db/rekt.ts";
 export { ProductsService } from "./db/products.ts";
 export { ResourceService } from "./db/resources.ts";

@@ -1,8 +1,8 @@
-import { Router, CompaniesService } from "../deps.ts";
+import { Router, AuditorsService } from "../deps.ts";
 
-const companiesRounter = new Router();
+const auditorsRounter = new Router();
 
-companiesRounter.get("/", async (ctx) => {
+auditorsRounter.get("/", async (ctx) => {
   // get the query string parameters for page and limit
   const page = ctx.request.url.searchParams.get("page");
   const limit = ctx.request.url.searchParams.get("limit");
@@ -52,8 +52,8 @@ companiesRounter.get("/", async (ctx) => {
     return;
   }
 
-  // get the companies from the database
-  const companies = await CompaniesService.getCompanies(
+  // get the auditors from the database
+  const auditors = await AuditorsService.getAuditors(
     page ? parseInt(page) : 1,
     limit ? parseInt(limit) : 10,
     sort ? sort : "id",
@@ -61,31 +61,31 @@ companiesRounter.get("/", async (ctx) => {
     order ? order : "asc"
   );
 
-  const companiesCount = await CompaniesService.getTotalCompanies();
-  const total = companiesCount[0].count.toString();
+  const auditorsCount = await AuditorsService.getTotalAuditors();
+  const total = auditorsCount[0].count.toString();
   ctx.response.headers.set("X-Row-Count", total);
 
   if (keyword) {
-    const companies = await CompaniesService.getTotalKeywordHits(keyword);
-    const total = companies[0].count.toString();
+    const auditors = await AuditorsService.getTotalKeywordHits(keyword);
+    const total = auditors[0].count.toString();
     ctx.response.headers.set("X-Keyword-Count", total);
   }
 
   // patch for now better approach is to map to type in the database
-  const companiesWithIntUpVotes = companies.map((company) => {
+  const auditorsWithIntUpVotes = auditors.map((auditor) => {
     return {
-      ...company,
-      up_votes: parseInt(company.up_votes),
+      ...auditor,
+      up_votes: parseInt(auditor.up_votes),
     };
   });
 
-  ctx.response.body = companiesWithIntUpVotes;
+  ctx.response.body = auditorsWithIntUpVotes;
 });
 
-companiesRounter.get("/stats", async (ctx) => {
-  const stats = await CompaniesService.getStats();
+auditorsRounter.get("/stats", async (ctx) => {
+  const stats = await AuditorsService.getStats();
 
   ctx.response.body = stats;
 });
 
-export { companiesRounter };
+export { auditorsRounter };

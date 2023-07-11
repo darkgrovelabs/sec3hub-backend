@@ -1,6 +1,6 @@
 import { sql } from "./db.ts";
 
-const getCompanies = async (
+const getAuditors = async (
   page: number,
   limit: number,
   sort: string,
@@ -16,11 +16,11 @@ const getCompanies = async (
 
   const isDesc = order === "desc" ? true : false;
 
-  let companies;
+  let auditors;
 
   if (!keyword) {
-    companies = await sql`
-        SELECT * FROM company
+    auditors = await sql`
+        SELECT * FROM auditor
         ${
           isDesc
             ? sql`ORDER BY ${sql(sort)} DESC`
@@ -30,8 +30,8 @@ const getCompanies = async (
         LIMIT ${limit}
         `;
   } else {
-    companies = await sql`
-        SELECT * FROM company 
+    auditors = await sql`
+        SELECT * FROM auditor 
         WHERE name ILIKE  ${"%" + keyword + "%"}
         OR type ILIKE ${"%" + keyword + "%"}
         OR location ILIKE ${"%" + keyword + "%"}
@@ -47,13 +47,13 @@ const getCompanies = async (
         `;
   }
 
-  return companies;
+  return auditors;
 };
 
 // get total keyword hits
 const getTotalKeywordHits = async (keyword: string) => {
   const totalKeywordHits = await sql`
-    SELECT COUNT(*) FROM company
+    SELECT COUNT(*) FROM auditor
     WHERE name ILIKE ${"%" + keyword + "%"}
     OR type ILIKE ${"%" + keyword + "%"}
     OR location ILIKE ${"%" + keyword + "%"}
@@ -62,44 +62,44 @@ const getTotalKeywordHits = async (keyword: string) => {
   return totalKeywordHits;
 };
 
-// get total number of companies
-const getTotalCompanies = async () => {
-  const totalCompanies = await sql`
-    SELECT COUNT(*) FROM company`;
-  return totalCompanies;
+// get total number of auditors
+const getTotalAuditors = async () => {
+  const totalAuditors = await sql`
+    SELECT COUNT(*) FROM auditor`;
+  return totalAuditors;
 };
 
-// gets sum of total_audits for all companies
+// gets sum of total_audits for all auditors
 const getTotalAudits = async () => {
   const totalAudits = await sql`
-    SELECT SUM(total_audits) FROM company`;
+    SELECT SUM(total_audits) FROM auditor`;
   return totalAudits;
 };
 
-const lastAddedCompany = async () => {
-  const lastAddedCompany = await sql`
-    SELECT * FROM company
+const lastAddedAuditor = async () => {
+  const lastAddedAuditor = await sql`
+    SELECT * FROM auditor
     ORDER BY created_at DESC
     LIMIT 1`;
-  return lastAddedCompany;
+  return lastAddedAuditor;
 };
 
 const getStats = async () => {
-  const totalCompanies = await getTotalCompanies();
+  const totalAuditors = await getTotalAuditors();
   const totalAudits = await getTotalAudits();
-  const lastRecord = await lastAddedCompany();
+  const lastRecord = await lastAddedAuditor();
 
   return {
-    totalCompanies,
+    totalAuditors,
     totalAudits,
     lastRecord,
   };
 };
 
 // to make it work with sinons stub we need to wrap the function in an object
-export const CompaniesService = {
-  getCompanies,
-  getTotalCompanies,
+export const AuditorsService = {
+  getAuditors,
+  getTotalAuditors,
   getTotalKeywordHits,
   getStats,
 };

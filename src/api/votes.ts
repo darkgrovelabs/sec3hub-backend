@@ -7,8 +7,8 @@ votesRouter.post("/", async (ctx) => {
 
   const { pub, msg, sig, id, type } = result;
 
-  // type can be only product or company
-  if (type !== "product" && type !== "company") {
+  // type can be only product or auditor
+  if (type !== "product" && type !== "auditor") {
     ctx.response.status = 400;
     ctx.response.body = {
       error: "invalid type",
@@ -16,11 +16,11 @@ votesRouter.post("/", async (ctx) => {
     return;
   }
 
-  // validate company/product id to be a number
+  // validate auditor/product id to be a number
   if (isNaN(parseInt(id))) {
     ctx.response.status = 400;
     ctx.response.body = {
-      error: "invalid company id",
+      error: "invalid auditor id",
     };
     return;
   }
@@ -40,13 +40,13 @@ votesRouter.post("/", async (ctx) => {
     return;
   }
 
-  // check if the user has already voted for this company
+  // check if the user has already voted for this auditor
   const hasVoted = await VotesService.hasVoted(pub, parseInt(id), type);
 
   if (hasVoted) {
     ctx.response.status = 409;
     ctx.response.body = {
-      error: "user has already voted for this company",
+      error: "user has already voted for this auditor",
     };
     return;
   }
