@@ -52,6 +52,20 @@ const getTotalResources = async () => {
   return totalRekts;
 };
 
+// get last rekt
+const lastAddedResource = async () => {
+  const lastAddedRekt = await sql`
+    SELECT * FROM resource ORDER BY id DESC LIMIT 1`;
+  return lastAddedRekt;
+};
+
+// bet unique categories count
+const getUniqueCategories = async () => {
+  const uniqueCategories = await sql`
+    SELECT COUNT(DISTINCT category) FROM resource`;
+  return uniqueCategories;
+};
+
 // get total keyword hits
 const getTotalKeywordHits = async (keyword: string) => {
   const totalKeywordHits = await sql`
@@ -62,8 +76,22 @@ const getTotalKeywordHits = async (keyword: string) => {
   return totalKeywordHits;
 };
 
+//stats
+const getStats = async () => {
+  const totalResources = await getTotalResources();
+  const totalCategories = await getUniqueCategories();
+  const lastResource = await lastAddedResource();
+
+  return {
+    totalResources,
+    totalCategories,
+    lastResource,
+  };
+};
+
 export const ResourceService = {
   getResources,
   getTotalResources,
   getTotalKeywordHits,
+  getStats,
 };

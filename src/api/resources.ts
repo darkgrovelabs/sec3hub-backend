@@ -69,4 +69,10 @@ resourcesRouter.get("/", async (ctx) => {
   ctx.response.body = resources;
 });
 
+// stats
+resourcesRouter.get("/stats", async (ctx) => {
+  const stats = await ResourceService.getStats();
+  ctx.response.body = stats;
+});
+
 export { resourcesRouter };

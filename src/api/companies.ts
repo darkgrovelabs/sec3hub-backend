@@ -71,8 +71,21 @@ companiesRounter.get("/", async (ctx) => {
     ctx.response.headers.set("X-Keyword-Count", total);
   }
 
-  // set the response body
-  ctx.response.body = companies;
+  // patch for now better approach is to map to type in the database
+  const companiesWithIntUpVotes = companies.map((company) => {
+    return {
+      ...company,
+      up_votes: parseInt(company.up_votes),
+    };
+  });
+
+  ctx.response.body = companiesWithIntUpVotes;
+});
+
+companiesRounter.get("/stats", async (ctx) => {
+  const stats = await CompaniesService.getStats();
+
+  ctx.response.body = stats;
 });
 
 export { companiesRounter };

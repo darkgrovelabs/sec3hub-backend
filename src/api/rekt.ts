@@ -76,4 +76,10 @@ rektsRouter.get("/", async (ctx) => {
   ctx.response.body = rekts;
 });
 
+// stats
+rektsRouter.get("/stats", async (ctx) => {
+  const stats = await RektsService.getStats();
+  ctx.response.body = stats;
+});
+
 export { rektsRouter };

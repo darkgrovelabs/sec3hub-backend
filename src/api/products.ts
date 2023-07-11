@@ -70,8 +70,22 @@ productsRouter.get("/", async (ctx) => {
     ctx.response.headers.set("X-Keyword-Count", total);
   }
 
+  // patch for now better approach is to map to type in the database
+  const productsWithTypes = products.map((product) => {
+    return {
+      ...product,
+      up_votes: parseInt(product.up_votes),
+    };
+  });
+
   // set the response body
-  ctx.response.body = products;
+  ctx.response.body = productsWithTypes;
+});
+
+// stats
+productsRouter.get("/stats", async (ctx) => {
+  const stats = await ProductsService.getStats();
+  ctx.response.body = stats;
 });
 
 export { productsRouter };

@@ -34,7 +34,11 @@ app.use(oakCors());
 
 // for x-row-count header
 app.use((ctx, next) => {
-  ctx.response.headers.set("Access-Control-Expose-Headers", "*");
+  // Keyword-Count and X-Row-Count
+  ctx.response.headers.set(
+    "Access-Control-Expose-Headers",
+    "X-Row-Count, X-Keyword-Count"
+  );
   return next();
 });
 

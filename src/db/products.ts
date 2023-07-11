@@ -56,6 +56,33 @@ const getTotalProducts = async () => {
   return totalProducts;
 };
 
+const lastAddedProduct = async () => {
+  const lastEntity = await sql`
+    SELECT * FROM product
+    ORDER BY created_at DESC
+    LIMIT 1`;
+  return lastEntity;
+};
+
+const getTotalOpenSource = async () => {
+  const totalOpenSource = await sql`
+    SELECT COUNT(*) FROM product
+    WHERE is_opensource = true`;
+  return totalOpenSource;
+};
+
+const getStats = async () => {
+  const totalProducts = await getTotalProducts();
+  const totalOpenSource = await getTotalOpenSource();
+  const lastEntity = await lastAddedProduct();
+
+  return {
+    totalProducts,
+    totalOpenSource,
+    lastEntity,
+  };
+};
+
 // get total keyword hits
 const getTotalKeywordHits = async (keyword: string) => {
   const totalKeywordHits = await sql`
@@ -72,4 +99,5 @@ export const ProductsService = {
   getProducts,
   getTotalProducts,
   getTotalKeywordHits,
+  getStats,
 };

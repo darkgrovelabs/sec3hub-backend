@@ -63,11 +63,37 @@ const getTotalKeywordHits = async (keyword: string) => {
 };
 
 // get total number of companies
-
 const getTotalCompanies = async () => {
   const totalCompanies = await sql`
     SELECT COUNT(*) FROM company`;
   return totalCompanies;
+};
+
+// gets sum of total_audits for all companies
+const getTotalAudits = async () => {
+  const totalAudits = await sql`
+    SELECT SUM(total_audits) FROM company`;
+  return totalAudits;
+};
+
+const lastAddedCompany = async () => {
+  const lastAddedCompany = await sql`
+    SELECT * FROM company
+    ORDER BY created_at DESC
+    LIMIT 1`;
+  return lastAddedCompany;
+};
+
+const getStats = async () => {
+  const totalCompanies = await getTotalCompanies();
+  const totalAudits = await getTotalAudits();
+  const lastEntity = await lastAddedCompany();
+
+  return {
+    totalCompanies,
+    totalAudits,
+    lastEntity,
+  };
 };
 
 // to make it work with sinons stub we need to wrap the function in an object
@@ -75,4 +101,5 @@ export const CompaniesService = {
   getCompanies,
   getTotalCompanies,
   getTotalKeywordHits,
+  getStats,
 };
