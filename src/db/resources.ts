@@ -80,12 +80,12 @@ const getTotalKeywordHits = async (keyword: string) => {
 const getStats = async () => {
   const totalResources = await getTotalResources();
   const totalCategories = await getUniqueCategories();
-  const lastResource = await lastAddedResource();
+  const lastRecord = await lastAddedResource();
 
   return {
     totalResources,
     totalCategories,
-    lastResource,
+    lastRecord,
   };
 };
 

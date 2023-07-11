@@ -87,12 +87,12 @@ const lastAddedCompany = async () => {
 const getStats = async () => {
   const totalCompanies = await getTotalCompanies();
   const totalAudits = await getTotalAudits();
-  const lastEntity = await lastAddedCompany();
+  const lastRecord = await lastAddedCompany();
 
   return {
     totalCompanies,
     totalAudits,
-    lastEntity,
+    lastRecord,
   };
 };
 

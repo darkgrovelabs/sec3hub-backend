@@ -84,11 +84,11 @@ const getTotalKeywordHits = async (keyword: string) => {
 const getStats = async () => {
   const totalRekts = await getTotalRekts();
   const totalDamage = await getTotalDamage();
-  const lastEntry = await lastAddedRekt();
+  const lastRecord = await lastAddedRekt();
   const stats = {
     totalRekts,
     totalDamage,
-    lastEntry,
+    lastRecord,
   };
   return stats;
 };

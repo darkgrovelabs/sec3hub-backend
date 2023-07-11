@@ -74,12 +74,12 @@ const getTotalOpenSource = async () => {
 const getStats = async () => {
   const totalProducts = await getTotalProducts();
   const totalOpenSource = await getTotalOpenSource();
-  const lastEntity = await lastAddedProduct();
+  const lastRecord = await lastAddedProduct();
 
   return {
     totalProducts,
     totalOpenSource,
-    lastEntity,
+    lastRecord,
   };
 };
 
