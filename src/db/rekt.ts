@@ -31,8 +31,10 @@ const getRekts = async (
         SELECT * FROM rekt 
         WHERE name ILIKE ${"%" + keyword + "%"}
         OR category ILIKE ${"%" + keyword + "%"}
+        or chain ILIKE ${"%" + keyword + "%"}
         OR audited_by::text ILIKE ${"%" + keyword + "%"}
         OR txs::text ILIKE ${"%" + keyword + "%"}
+        or sources::text ILIKE ${"%" + keyword + "%"}
 
         ${
           isDesc
@@ -71,11 +73,13 @@ const lastAddedRekt = async () => {
 // get total keyword hits
 const getTotalKeywordHits = async (keyword: string) => {
   const totalKeywordHits = await sql`
-    SELECT * FROM rekt 
+    SELECT COUNT(*) FROM rekt 
     WHERE name ILIKE ${"%" + keyword + "%"}
     OR category ILIKE ${"%" + keyword + "%"}
+    or chain ILIKE ${"%" + keyword + "%"}
     OR audited_by::text ILIKE ${"%" + keyword + "%"}
     OR txs::text ILIKE ${"%" + keyword + "%"}
+    or sources::text ILIKE ${"%" + keyword + "%"}
       `;
   return totalKeywordHits;
 };

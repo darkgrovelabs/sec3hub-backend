@@ -67,8 +67,8 @@ rektsRouter.get("/", async (ctx) => {
   ctx.response.headers.set("X-Row-Count", total);
 
   if (keyword) {
-    const companies = await RektsService.getTotalKeywordHits(keyword);
-    const total = companies[0].count.toString();
+    const rekts = await RektsService.getTotalKeywordHits(keyword);
+    const total = rekts[0].count.toString();
     ctx.response.headers.set("X-Keyword-Count", total);
   }
 

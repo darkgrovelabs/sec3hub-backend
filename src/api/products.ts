@@ -51,7 +51,6 @@ productsRouter.get("/", async (ctx) => {
     return;
   }
 
-  // get the companies from the database
   const products = await ProductsService.getProducts(
     page ? parseInt(page) : 1,
     limit ? parseInt(limit) : 10,
