@@ -29,7 +29,8 @@ const getResources = async (
   } else {
     resources = await sql`
         SELECT * FROM resource 
-        WHERE category ILIKE ${"%" + keyword + "%"}
+        WHERE name ILIKE ${"%" + keyword + "%"}
+        OR categories::text ILIKE ${"%" + keyword + "%"}
         OR description ILIKE ${"%" + keyword + "%"}
         ${
           isDesc
@@ -62,7 +63,8 @@ const lastAddedResource = async () => {
 // bet unique categories count
 const getUniqueCategories = async () => {
   const uniqueCategories = await sql`
-    SELECT COUNT(DISTINCT category) FROM resource`;
+    SELECT COUNT(DISTINCT value) 
+    FROM resource, json_array_elements_text(resource.categories) AS value`;
   return uniqueCategories;
 };
 
@@ -70,7 +72,7 @@ const getUniqueCategories = async () => {
 const getTotalKeywordHits = async (keyword: string) => {
   const totalKeywordHits = await sql`
     SELECT COUNT(*)  FROM resource 
-    WHERE category ILIKE ${"%" + keyword + "%"}
+    WHERE categories::text ILIKE ${"%" + keyword + "%"}
     OR description ILIKE ${"%" + keyword + "%"}
       `;
   return totalKeywordHits;
