@@ -11,7 +11,7 @@ resourcesRouter.get("/", async (ctx) => {
   const order = ctx.request.url.searchParams.get("order");
 
   // sort allowed values whitelist
-  const sortAllowedValues = ["id", "created_at"];
+  const sortAllowedValues = ["id", "created_at", "up_votes"];
 
   // allowed orders
   const allowedOrders = ["asc", "desc"];

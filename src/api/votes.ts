@@ -8,7 +8,7 @@ votesRouter.post("/", async (ctx) => {
   const { pub, msg, sig, id, type } = result;
 
   // type can be only product or auditor
-  if (type !== "product" && type !== "auditor") {
+  if (type !== "product" && type !== "auditor" && type !== "resource") {
     ctx.response.status = 400;
     ctx.response.body = {
       error: "invalid type",
