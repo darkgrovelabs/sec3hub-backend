@@ -79,7 +79,7 @@ const getTotalAudits = async () => {
 const lastAddedAuditor = async () => {
   const lastAddedAuditor = await sql`
     SELECT * FROM auditor
-    ORDER BY created_at DESC
+    ORDER BY id DESC
     LIMIT 1`;
   return lastAddedAuditor;
 };

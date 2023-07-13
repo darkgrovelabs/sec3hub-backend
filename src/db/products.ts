@@ -59,7 +59,7 @@ const getTotalProducts = async () => {
 const lastAddedProduct = async () => {
   const lastEntity = await sql`
     SELECT * FROM product
-    ORDER BY created_at DESC
+    ORDER BY id DESC
     LIMIT 1`;
   return lastEntity;
 };
