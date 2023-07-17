@@ -8,6 +8,6 @@ if (!port) port = Deno.env.get("PORT") || "8080";
 console.log(`Listening on port ${port}...`);
 
 await app.listen({
-  hostname: "0.0.0.0",
+  hostname: "::",
   port: +port,
 });
