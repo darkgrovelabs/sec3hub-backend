@@ -86,5 +86,7 @@ Note endpoints return two headers
 
 ### Collaborations & Contributions & Sponsorship
 
-Please contact via twitter [@0xsha](https://twitter.com/@0xsha)  or [@jeromevvb](https://twitter.com/@jeromevvb)  or email to  [hello](mailto:hello@darkgrove.xyz)
+Please contact via twitter [@0xsha](https://twitter.com/@0xsha)  or [@jeromevvb](https://twitter.com/@jeromevvb)  
+
+email to  [hello](mailto:hello@darkgrove.xyz) .
 
