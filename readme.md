@@ -1,24 +1,24 @@
 ## API for sec3hub.xyz
 
-a standalone api, aggregate cleaned data to sec3hub.xyz frontend might become a api server for other projects and friends in the future.
+a standalone api, aggregate cleaned data to sec3hub.xyz frontend might become a api server for other projects and friends in the future. check out the interface [here](https://github.com/darkgrovelabs/sec3hub)
 
 
 ## Backgroud : 
 
-at darkgrove we feel adventurous so we are going to try deno and fly , neon for this project. lets see how it goes.
+we felt adventurous so we are gave deno a try on production as a backend server.
 
 ##  Tech stack
 
 - deno
-  - pleasent developer experience
+  - runtime
 - oak 
-  - web framework
+  - rest framework
 - postgresjs
   - postgres client
 - fly
-  docker based serverless 
+  - docker based serverless 
 - neon
-    Serverless Postgres 
+  - Serverless Postgres 
 
 ## Setup
 for local dev can create a .env file in the root directory. for production use process env variables.
@@ -64,6 +64,8 @@ docker run -it -p 8080:8080 -d --rm sec3back
 
 ## Deploy
 
+it will automatically deploy to fly.io via github actions.
+
 ```bash
 flyctl deploy
 ```
@@ -76,8 +78,13 @@ there is insomia file in the root directory for testing the api. no fancy swagge
 ![img](./assets/docs.png)
 
 
-
 Note endpoints return two headers
 
-x-keyword-count	 total number of searched keyword in the database
-x-row-count	  total number of rows returned from the database
+- x-keyword-count	 total number of searched keyword in the database
+- x-row-count	  total number of rows returned from the database
+
+
+### Collaborations & Contributions & Sponsorship
+
+Please contact via twitter [@0xsha] or [@jeromevvb]  or email [hello](mailto:hello@darkgrove.xyz)
+
